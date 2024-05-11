@@ -22,13 +22,21 @@ enum Category {
   shopping,
   travel,
   subscription,
+  salary,
+  business,
+  investment,
+  freelance
 }
 
 const categoryIcons = {
   Category.food: FontAwesomeIcons.burger,
   Category.shopping: FontAwesomeIcons.shoppingBag,
   Category.travel: FontAwesomeIcons.plane,
-  Category.subscription: FontAwesomeIcons.dollarSign,
+  Category.subscription: FontAwesomeIcons.creditCard,
+  Category.salary: FontAwesomeIcons.dollarSign,
+  Category.business: FontAwesomeIcons.businessTime,
+  Category.investment: FontAwesomeIcons.chartLine,
+  Category.freelance: FontAwesomeIcons.handshake,
 };
 
 class Transaction {

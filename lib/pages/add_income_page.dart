@@ -78,7 +78,7 @@ class _AddIncomeSheetState extends State<AddIncomeSheet> {
     Navigator.pop(context);
   }
 
-  void clear(){
+  void clear() {
     _descriptionController.clear();
     _incomeController.clear();
   }
@@ -102,9 +102,9 @@ class _AddIncomeSheetState extends State<AddIncomeSheet> {
         foregroundColor: Colors.white,
         flexibleSpace: FlexibleSpaceBar(
           background: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.deepPurple, Colors.deepPurple.shade400],
+                colors: [Colors.deepPurple, Colors.white],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),
@@ -180,10 +180,17 @@ class _AddIncomeSheetState extends State<AddIncomeSheet> {
                     _selectedCategory = newValue;
                   });
                 },
-                items: categories.map((category) {
+                items: categories.skip(categories.length - 4).map((category) {
+                  String categoryName = category.toString().split('.').last;
+                  String capitalizedCategoryName =
+                      categoryName.substring(0, 1).toUpperCase() +
+                          categoryName.substring(1);
                   return DropdownMenuItem<Category>(
                     value: category,
-                    child: Text(category.toString().split('.').last),
+                    child: Text(
+                      capitalizedCategoryName,
+                      style: GoogleFonts.poppins(),
+                    ),
                   );
                 }).toList(),
               ),

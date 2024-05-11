@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context).colorScheme;
 
-    double initialBalance = 100000; // Initial balance
+    double initialBalance = 0; // Initial balance
 
     var transactionData = Provider.of<TransactionData>(context);
 
@@ -187,7 +187,9 @@ class _HomePageState extends State<HomePage> {
                       height: 4,
                     ),
                     Text(
-                      '₹${accountBalance.toStringAsFixed(0)}',
+                      accountBalance < 0
+                          ? '-₹${(-accountBalance).toStringAsFixed(0)}'
+                          : '₹${accountBalance.toStringAsFixed(0)}',
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 38.0,

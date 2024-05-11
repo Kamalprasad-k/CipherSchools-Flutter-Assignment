@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:project_cipherx/models/transaction_model.dart'; 
+import 'package:project_cipherx/models/transaction_model.dart';
 
 class TransactionItem extends StatelessWidget {
   const TransactionItem(this.transaction, {super.key});
@@ -29,7 +29,7 @@ class TransactionItem extends StatelessWidget {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: const Offset(0, 3), 
+            offset: const Offset(0, 3),
           ),
         ],
       ),
@@ -40,7 +40,13 @@ class TransactionItem extends StatelessWidget {
           children: [
             Container(
               decoration: BoxDecoration(
-                color: Colors.blueGrey, 
+                gradient: LinearGradient(
+                  colors: transaction.type == TransactionType.income
+                      ? [Colors.green, Colors.green.shade200]
+                      : [Colors.red, Colors.red.shade200],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
                 borderRadius: BorderRadius.circular(8),
               ),
               padding: const EdgeInsets.all(10),

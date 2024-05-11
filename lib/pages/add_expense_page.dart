@@ -99,9 +99,9 @@ class _AddExpenseSheetState extends State<AddExpenseSheet> {
         foregroundColor: Colors.white,
         flexibleSpace: FlexibleSpaceBar(
           background: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.blue.shade300, Colors.blue],
+                colors: [Colors.blue, Colors.white],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),
@@ -177,13 +177,21 @@ class _AddExpenseSheetState extends State<AddExpenseSheet> {
                     _selectedCategory = newValue;
                   });
                 },
-                items: Category.values.map((category) {
+                items: Category.values
+                    .take(Category.values.length - 4)
+                    .map((category) {
+                  String categoryName = category.toString().split('.').last;
+                  String capitalizedCategoryName =
+                      categoryName.substring(0, 1).toUpperCase() +
+                          categoryName.substring(1);
                   return DropdownMenuItem<Category>(
                     value: category,
-                    child: Text(category.toString().split('.').last),
+                    child: Text(capitalizedCategoryName,
+                        style: GoogleFonts.poppins()),
                   );
                 }).toList(),
               ),
+
               const SizedBox(height: 26),
               // Text field for short description
               TextFormField(
@@ -233,12 +241,11 @@ class _AddExpenseSheetState extends State<AddExpenseSheet> {
               ElevatedButton(
                 onPressed: saveExpense,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepPurple, 
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 20, horizontal: 140),
+                  backgroundColor: Colors.deepPurple,
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 140),
                   shape: RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.circular(20), 
+                    borderRadius: BorderRadius.circular(20),
                   ),
                 ),
                 child: const Text(
