@@ -1,5 +1,3 @@
-Certainly! Here's the revised README.md without the "Contributing" and "License" sections:
-
 ---
 
 # Expense Tracker App
